@@ -16,10 +16,10 @@ Vagrant.configure("2") do |config|
  config.librarian_puppet.placeholder_filename = ".MYPLACEHOLDER"
  config.vm.provision :shell, :path => "shell/main.sh"
 
- config.vm.define "jenkins2" do |jenkins2|
-   jenkins2.vm.network "private_network", ip: "33.33.33.30"
-   jenkins2.vm.network "forwarded_port", guest: 8080, host: 8080
-   jenkins2.vm.provision "puppet"
+ config.vm.define "jenkins" do |jenkins|
+   jenkins.vm.network "private_network", ip: "33.33.33.30"
+   jenkins.vm.network "forwarded_port", guest: 8080, host: 8080
+   jenkins.vm.provision "puppet"
  end
 
 end
