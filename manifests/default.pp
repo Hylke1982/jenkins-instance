@@ -4,9 +4,9 @@ class { 'apt':
   purge_sources_list   => true
 }
 
-class officestats::jenkinsinstall {
+class jenkinsinstance::jenkinsinstall {
 
-  class { 'officestats::jenkinsinstall::debs': } ->
+  class { 'jenkinsinstance::jenkinsinstall::debs': } ->
   class { 'java':
     distribution => 'jdk'
   } ->
@@ -23,7 +23,7 @@ class officestats::jenkinsinstall {
   }
 }
 
-class officestats::jenkinsinstall::debs {
+class jenkinsinstance::jenkinsinstall::debs {
 
   apt::source { 'deb':
     location          => 'http://ftp.nl.debian.org/debian/',
@@ -59,7 +59,7 @@ class officestats::jenkinsinstall::debs {
 
 node default{
 
-  class { 'officestats::jenkinsinstall': }
+  class { 'jenkinsinstance::jenkinsinstall': }
   package{ 'git-core':
     ensure => 'installed'
   }
