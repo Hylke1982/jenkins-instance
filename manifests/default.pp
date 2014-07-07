@@ -11,14 +11,18 @@ class jenkinsinstance::jenkinsinstall {
     distribution => 'jdk'
   } ->
   class { 'jenkins' :
-    repo         => false,
-    install_java => false,
-    plugin_hash  => {
-      ssh-agent => { },
-      credentials =>  { },
-      git => { },
-      git-client => { },
-      job-dsl => { }
+    repo                  => false,
+    install_java          => false,
+    plugin_hash           => {
+      ssh-agent             => { } ,
+      credentials           =>  { } ,
+      git                   => { } ,
+      git-client            => { } ,
+      job-dsl               => { } ,
+      parameterized-trigger => { } ,
+      jquery                => { } ,
+      dashboard-view => { },
+      build-pipeline-plugin => { }
     }
   }
 }
