@@ -68,7 +68,7 @@ class jenkinsinstance::jenkinsinstall::debs {
 node default{
 
   class { 'jenkinsinstance::jenkinsinstall': }
-  package{ 'git-core':
+  package{ ['git-core','maven']:
     ensure => 'installed'
   }
 
