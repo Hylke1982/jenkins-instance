@@ -27,3 +27,10 @@ bootstrapped with the default Jenkins installation. You can update these by usin
 
 You can bootstrap extra Jenkins plugins by adding them to the Puppet manifest [/manifests/default.pp](/manifests/default.pp).
 Full details of the usage of the Puppet Jenkins plugin can be found [here](https://github.com/jenkinsci/puppet-jenkins)
+
+## Manual steps
+
+The following steps need to be done manually, these steps can be done in the 'Manage Jenkins -> Configure System' menu option
+
+- Install JDK and accept the license
+- Install a Maven version
