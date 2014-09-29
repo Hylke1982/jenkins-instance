@@ -16,13 +16,17 @@ class jenkinsinstance::jenkinsinstall {
     plugin_hash           => {
       ssh-agent             => { } ,
       credentials           =>  { } ,
+      ssh-credentials    => { },
       git                   => { } ,
       git-client            => { } ,
+      github-api => { },
+      scm-api => { },
       job-dsl               => { } ,
       parameterized-trigger => { } ,
       jquery                => { } ,
       dashboard-view => { },
-      build-pipeline-plugin => { }
+      build-pipeline-plugin => { },
+      github => { }
     }
   }
 }
