@@ -26,7 +26,8 @@ class jenkinsinstance::jenkinsinstall {
       jquery                => { } ,
       dashboard-view => { },
       build-pipeline-plugin => { },
-      github => { }
+      github => { },
+      build-blocker-plugin => { }
     }
   }
 }
