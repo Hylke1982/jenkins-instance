@@ -7,6 +7,7 @@ class { 'apt':
 class jenkinsinstance::jenkinsinstall {
 
   class { 'jenkinsinstance::jenkinsinstall::debs': } ->
+  class { 'jenkinsinstance::jenkinsinstall::packages' : }
   class { 'java':
     distribution => 'jdk'
   } ->
@@ -27,7 +28,8 @@ class jenkinsinstance::jenkinsinstall {
       dashboard-view => { },
       build-pipeline-plugin => { },
       github => { },
-      build-blocker-plugin => { }
+      build-blocker-plugin => { },
+      swarm => { }
     }
   }
 }
@@ -66,11 +68,14 @@ class jenkinsinstance::jenkinsinstall::debs {
 
 }
 
-node default{
-
-  class { 'jenkinsinstance::jenkinsinstall': }
+class jenkinsinstance::jenkinsinstall::packages {
   package{ ['git-core','maven']:
     ensure => 'installed'
   }
+}
+
+node default{
+
+  class { 'jenkinsinstance::jenkinsinstall': }
 
 }
