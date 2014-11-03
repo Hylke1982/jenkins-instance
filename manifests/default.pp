@@ -7,10 +7,8 @@ class { 'apt':
 class jenkinsinstance::jenkinsinstall {
 
   class { 'jenkinsinstance::jenkinsinstall::debs': } ->
-  class { 'jenkinsinstance::jenkinsinstall::packages' : }
-  class { 'java':
-    distribution => 'jdk'
-  } ->
+  class { 'jenkinsinstance::jenkinsinstall::packages' : } ->
+  class { 'jenkinsinstance::jenkinsinstall::java' : } ->
   class { 'jenkins' :
     repo                  => false,
     install_java          => false,
@@ -71,6 +69,12 @@ class jenkinsinstance::jenkinsinstall::debs {
 class jenkinsinstance::jenkinsinstall::packages {
   package{ ['git-core','maven']:
     ensure => 'installed'
+  }
+}
+
+class jenkinsinstance::jenkinsinstall::java {
+  package { 'openjdk-7-jdk':
+    ensure => 'present'
   }
 }
 
