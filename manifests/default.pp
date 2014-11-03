@@ -81,5 +81,11 @@ class jenkinsinstance::jenkinsinstall::java {
 node default{
 
   class { 'jenkinsinstance::jenkinsinstall': }
+  file { 'motd':
+    path    => "/etc/motd",
+    ensure  => present,
+    mode    => 0640,
+    content => hiera('motd_message'),
+  }
 
 }

@@ -19,7 +19,9 @@ Vagrant.configure("2") do |config|
  config.vm.define "jenkins" do |jenkins|
    jenkins.vm.network "private_network", ip: "33.33.33.30"
    jenkins.vm.network "forwarded_port", guest: 8080, host: 8080
-   jenkins.vm.provision "puppet"
+   jenkins.vm.provision "puppet" do |puppet|
+     puppet.hiera_config_path = "hiera/hiera.yaml"
+   end
  end
 
 end

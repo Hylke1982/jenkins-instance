@@ -1,0 +1,6 @@
+---
+:hierarchy:
+ - jenkins
+
+:yaml:
+  :datadir: '/vagrant/hiera'
