@@ -15,6 +15,7 @@ class jenkinsinstance::jenkinsinstall {
     plugin_hash           => {
       ssh-agent             => { } ,
       credentials           =>  { } ,
+      copyartifact => { },
       ssh-credentials    => { },
       git                   => { } ,
       git-client            => { } ,
