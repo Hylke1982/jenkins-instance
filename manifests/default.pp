@@ -16,6 +16,7 @@ class jenkinsinstance::jenkinsinstall {
       ssh-agent             => { } ,
       credentials           =>  { } ,
       copyartifact => { },
+      clone-workspace-scm => { },
       ssh-credentials    => { },
       git                   => { } ,
       git-client            => { } ,
