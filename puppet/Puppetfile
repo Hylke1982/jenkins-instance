@@ -1,3 +1,5 @@
 forge 'http://forge.puppetlabs.com'
 
+mod 'maestrodev/ssh_keygen'
+
 mod 'rtyler/jenkins'

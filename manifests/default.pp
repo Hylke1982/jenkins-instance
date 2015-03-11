@@ -31,7 +31,8 @@ class jenkinsinstance::jenkinsinstall {
       build-blocker-plugin => { },
       swarm => { }
     }
-  }
+  } ->
+  class { 'jenkinsinstance::jenkinsinstall::jenkins_ssh_keygen' : }
 }
 
 class jenkinsinstance::jenkinsinstall::debs {
@@ -78,6 +79,31 @@ class jenkinsinstance::jenkinsinstall::java {
   package { 'openjdk-7-jdk':
     ensure => 'present'
   }
+}
+
+class jenkinsinstance::jenkinsinstall::jenkins_ssh_keygen {
+  $jenkins_home = '/var/lib/jenkins'
+  file{ "$jenkins_home/.ssh":
+    owner    => "jenkins",
+    group    => "jenkins",
+    ensure   => 'directory'
+  } ->
+  ssh_keygen { 'jenkins':
+    filename => "$jenkins_home/.ssh/id_rsa"
+  } ->
+  file { 'copy python web server' :
+    path   => "$jenkins_home/public_key_server.py",
+    ensure => 'present',
+    source => '/vagrant/files/python/bin/public_key_server.py'
+  } ->
+  exec { 'start public key exposure' :
+    command => 'python public_key_server.py &',
+    path    => ['/usr/bin'],
+    user    => 'jenkins',
+    group   => 'jenkins',
+    cwd     => $jenkins_home
+  }
+
 }
 
 node default{
