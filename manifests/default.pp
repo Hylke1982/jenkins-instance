@@ -39,21 +39,21 @@ class jenkinsinstance::jenkinsinstall::debs {
 
   apt::source { 'deb':
     location          => 'http://ftp.nl.debian.org/debian/',
-    release           => "wheezy",
+    release           => "jessie",
     repos             => 'main',
     include_src       => true
   }
 
   apt::source { 'deb-updates':
     location          => 'http://ftp.nl.debian.org/debian/',
-    release           => "wheezy-updates",
+    release           => "jessie-updates",
     repos             => 'main',
     include_src       => true
   }
 
   apt::source { 'deb-security':
     location          => 'http://ftp.nl.debian.org/debian-security/',
-    release           => "wheezy/updates",
+    release           => "jessie/updates",
     repos             => 'main',
     include_src       => true
   }
@@ -79,6 +79,7 @@ class jenkinsinstance::jenkinsinstall::java {
   package { 'openjdk-7-jdk':
     ensure => 'present'
   }
+
 }
 
 class jenkinsinstance::jenkinsinstall::jenkins_ssh_keygen {
