@@ -36,23 +36,25 @@ class jenkinsinstance::jenkinsinstall {
 }
 
 class jenkinsinstance::jenkinsinstall::debs {
+  $debian_update_site = 'http://ftp.nl.debian.org/debian/'
+  $debian_security_update_site = 'http://ftp.nl.debian.org/debian-security/'
 
   apt::source { 'deb':
-    location          => 'http://ftp.nl.debian.org/debian/',
+    location          => $debian_update_site,
     release           => "jessie",
     repos             => 'main',
     include_src       => true
   }
 
   apt::source { 'deb-updates':
-    location          => 'http://ftp.nl.debian.org/debian/',
+    location          => $debian_update_site,
     release           => "jessie-updates",
     repos             => 'main',
     include_src       => true
   }
 
   apt::source { 'deb-security':
-    location          => 'http://ftp.nl.debian.org/debian-security/',
+    location          => $debian_security_update_site,
     release           => "jessie/updates",
     repos             => 'main',
     include_src       => true
