@@ -4,8 +4,8 @@
 
 Vagrant.configure("2") do |config|
 
- config.vm.box = "debian-wheezy-amd64-puppetlabs"
- config.vm.box_url = "https://dl.dropboxusercontent.com/u/3523744/boxes/debian-jessie-amd64-lxc-puppet/debian-jessie-lxc-puppet.box"
+ config.vm.box = "debian-8.1-lxc-puppet"
+ config.vm.box_url = "https://dl.dropboxusercontent.com/u/3523744/boxes/debian-8.1-amd64-lxc-puppet/debian-8.1-lxc-puppet.box"
 
  config.vm.provider "virtualbox" do |v|
    v.memory = 1024

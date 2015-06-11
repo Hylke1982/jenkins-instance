@@ -71,11 +71,11 @@ install_gem()
 
  if [ "$FOUND_GEM" -ne '0' ]; then
   echo "GEM not found"
-  $PACKAGER_INSTALL ruby2.0
+  $PACKAGER_INSTALL ruby2.1
  else
   local GEM_VERSION_OK=$(check_gem_version)
   if [ "$GEM_VERSION_OK" != 'true' ]; then
-   $PACKAGER_INSTALL ruby1.9.3
+   $PACKAGER_INSTALL ruby2.1
   else
    echo "Correct GEM version installed"
   fi
