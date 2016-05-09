@@ -1,7 +1,4 @@
 class { 'apt':
-  always_apt_update    => true,
-  update_timeout       => undef,
-  purge_sources_list   => true
 }
 
 class jenkinsinstance::jenkinsinstall {
@@ -13,6 +10,7 @@ class jenkinsinstance::jenkinsinstall {
     repo                  => false,
     install_java          => false,
     plugin_hash           => {
+      icon-shim           => { } ,
       ssh-agent             => { } ,
       credentials           =>  { } ,
       copyartifact => { },
