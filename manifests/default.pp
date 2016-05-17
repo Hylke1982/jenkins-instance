@@ -1,3 +1,5 @@
+$jenkins_home = '/var/lib/jenkins'
+
 class { 'apt':
 }
 
@@ -10,24 +12,62 @@ class jenkinsinstance::jenkinsinstall {
     repo                  => false,
     install_java          => false,
     plugin_hash           => {
-      icon-shim           => { } ,
-      ssh-agent             => { } ,
-      credentials           =>  { } ,
-      copyartifact => { },
-      clone-workspace-scm => { },
-      ssh-credentials    => { },
-      git                   => { } ,
-      git-client            => { } ,
-      github-api => { },
-      scm-api => { },
-      job-dsl               => { } ,
-      parameterized-trigger => { } ,
-      jquery                => { } ,
-      dashboard-view => { },
-      build-pipeline-plugin => { },
-      github => { },
-      build-blocker-plugin => { },
-      swarm => { }
+      icon-shim                                                => { },
+      ssh-agent                                                => { },
+      script-security                                          => { },
+      structs                                                  => { },
+      junit                                                    => { },
+      credentials                                              => { },
+      copyartifact                                             => { },
+      clone-workspace-scm                                      => { },
+      ssh-credentials                                          => { },
+      git                                                      => { },
+      git-client                                               => { },
+      git-server                                               => { },
+      github-api                                               => { },
+      mailer                                                   => { },
+      matrix-project                                           => { },
+      scm-api                                                  => { },
+      job-dsl                                                  => { },
+      parameterized-trigger                                    => { },
+      jquery                                                   => { },
+      jquery-detached                                          => { },
+      ace-editor                                               => { },
+      handlebars                                               => { },
+      momentjs                                                 => { },
+      dashboard-view                                           => { },
+      build-pipeline-plugin                                    => { },
+      github                                                   => { },
+      token-macro                                              => { },
+      delivery-pipeline-plugin                                 => { },
+      build-blocker-plugin                                     => { },
+      workflow-scm-step                                        => { },
+      pipeline-stage-view                                      => { },
+      pipeline-build-step                                      => { },
+      workflow-durable-task-step                               => { },
+      pipeline-stage-step                                      => { },
+      workflow-api                                             => { },
+      workflow-step-api                                        => { },
+      workflow-support                                         => { },
+      workflow-basic-steps                                     => { },
+      pipeline-input-step                                      => { },
+      pipeline-rest-api                                        => { },
+      pipeline-stage-view                                      => { },
+      workflow-job                                             => { },
+      workflow-cps-global-lib                                  => { },
+      workflow-cps                                             => { },
+      workflow-multibranch                                     => { },
+      workflow-aggregator                                      => { },
+      branch-api                                               => { },
+      cloudbees-folder                                         => { },
+      matrix-auth                                              => { },
+      durable-task                                             => { },
+      antisamy-markup-formatter                                => { },
+      maven-plugin                                             => { },
+      javadoc                                                  => { },
+      checkstyle                                               => { },
+      analysis-cores                                            => { },
+      swarm                                                    => { }
     }
   } ->
   class { 'jenkinsinstance::jenkinsinstall::jenkins_ssh_keygen' : }
@@ -83,7 +123,6 @@ class jenkinsinstance::jenkinsinstall::java {
 }
 
 class jenkinsinstance::jenkinsinstall::jenkins_ssh_keygen {
-  $jenkins_home = '/var/lib/jenkins'
   file{ "$jenkins_home/.ssh":
     owner    => "jenkins",
     group    => "jenkins",
@@ -108,7 +147,6 @@ class jenkinsinstance::jenkinsinstall::jenkins_ssh_keygen {
 }
 
 node default{
-
   class { 'jenkinsinstance::jenkinsinstall': }
   file { 'motd':
     path    => "/etc/motd",
